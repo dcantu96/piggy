@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
 
   def home
     # Will create a new account for new users
-    @accounts = current_user.accounts
+    @account = current_user.account
     @goals = current_user.goals
 
     # Will build a new goal for new users
@@ -15,7 +15,9 @@ class DashboardController < ApplicationController
   private
 
   def check_for_accounts
-    current_user.accounts.build if current_user.accounts.empty?
-    current_user.accounts.first.update_attributes name: 'Wallet'
+    if current_user.account.nil?
+      current_user.account.build
+      current_user.account.first.update_attributes name: 'Wallet'
+    end
   end
 end
