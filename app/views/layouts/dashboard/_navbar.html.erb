@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#" id="topnav">Navbar</a>
+    <div class="container-fluid">
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <i class="fas fa-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <%= render 'layouts/dashboard/logout_button' if user_signed_in? %>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>

@@ -1,0 +1,3 @@
+<h1>Welcome, <%= current_user.first_name %>!</h1>
+<%= render 'goal/form', goal: @goal if current_user.goals.empty? %>
+<%= render 'dashboard/goals' %>

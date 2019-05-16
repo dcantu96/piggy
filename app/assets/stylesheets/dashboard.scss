@@ -1,0 +1,36 @@
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    flex: 1;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    background: rgb(123, 125, 129);
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+    margin: 30px;
+    color: rgb(0, 0, 0);
+}
+
+#content {
+    flex: 1;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+@media(max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
