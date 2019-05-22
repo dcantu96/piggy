@@ -16,6 +16,10 @@
         <h6 class="card-subtitle mb-2 text-muted">Investment Goal: $<%= goal.amount %></h6>
         <h6 class="card-subtitle mb-2 text-muted">Current Investment: <span class="badge badge-secondary">$<%= goal.investment %></span></h6>
         <h5 class="card-text text-center"><span class="badge badge-warning">$<%= (goal.amount - goal.investment).round %></span></h5>
+        <div class="progress">
+            <div class="progress-bar bg-secondary" role="progressbar" style="width: <%= ((goal.investment/goal.amount)*100).round %>%" aria-valuenow="<%= ((goal.investment/goal.amount)*100).round %>" aria-valuemin="0" aria-valuemax="100"><%= ((goal.investment/goal.amount)*100).round %>%</div>
+            <div class="progress-bar bg-warning" role="progressbar" style="width: <%= 100-(((goal.investment/goal.amount)*100).round) %>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">missing</div>
+        </div>
         <%= link_to "Investments", goal_incomes_path(goal), class: 'card-link' %>
         <a href="#" class="card-link"><%= goal.completion_date.strftime('%b %d, %Y') %></a>
     </div>
