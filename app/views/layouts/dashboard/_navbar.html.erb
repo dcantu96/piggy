@@ -4,7 +4,7 @@
         <button type="button" id="sidebarCollapse" class="btn btn-info">
             <i class="fas fa-align-left"></i>
         </button>
-        <%= render 'layouts/dashboard/logout_button' if user_signed_in? %>
         <%= render 'layouts/dashboard/profile_button' if user_signed_in? %>
+        <%= render 'layouts/dashboard/logout_button' if user_signed_in? %>
     </div>
 </nav>
