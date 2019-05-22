@@ -16,8 +16,7 @@ class DashboardController < ApplicationController
 
   def check_for_accounts
     if current_user.account.nil?
-      current_user.account.build
-      current_user.account.first.update_attributes name: 'Wallet'
+      current_user.account.create name: 'Wallet'
     end
   end
 end
