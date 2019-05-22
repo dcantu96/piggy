@@ -1,1 +1,9 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="float-left">My Goals</h2>
+            <%= render 'dashboard/add_goal_button' %>
+        </div>
+    </div>
+</div>
 <%=  bar_chart @goals.joins(:incomes).group("goals.name").sum("incomes.amount"), xtitle: "Current Investment" %>

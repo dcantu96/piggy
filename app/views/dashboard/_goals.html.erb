@@ -2,7 +2,7 @@
     <div class="row">
         <% group.each do |goal| %>
             <div class="col">
-                <%= render 'dashboard/goal_element', goal: goal if goal %>
+                <%= render 'dashboard/goal_element', goal: goal unless goal.nil? %>
             </div>
         <% end %>
     </div>

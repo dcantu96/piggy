@@ -9,14 +9,14 @@ class DashboardController < ApplicationController
     @goals = current_user.goals
 
     # Will build a new goal for new users
-    @goal = current_user.goals.build if current_user.goals.empty?
+    
   end
 
   private
 
   def check_for_accounts
     if current_user.account.nil?
-      current_user.account.create name: 'Wallet'
+      current_user.create_account name: 'Wallet'
     end
   end
 end
