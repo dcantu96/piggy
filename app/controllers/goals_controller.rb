@@ -1,13 +1,8 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:edit, :update, :show]
+  before_action :set_goal, only: [:edit, :update, :show, :delete]
   layout 'dashboard'
   def index
     @goals = current_user.goals
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @goals }
-    end
   end
 
   def show
@@ -45,7 +40,7 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-    @goal.destroy
+    Goal.find(params[:id]).destroy
     redirect_to root_url, notice: 'Goal was successfully destroyed.'
   end
 

@@ -1,10 +1,22 @@
-<div class="card" style="width: 18rem;">
+<div class="card mt-3 mb-3" style="width: 18rem;">
     <div class="card-body">
-        <h5 class="card-title"><%= goal.name %></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Investment Goal: <%= goal.amount %></h6>
-        <h6 class="card-subtitle mb-2 text-muted">Actual Investment: <span class="badge badge-secondary"><%= goal.investment %></span></h6>
+        <div class="row">
+            <div class="col">
+                <h5 class="card-title"><%= goal.name %></h5>
+            </div>
+            <div class="col">
+                <%= link_to goal, method: :delete, data: { confirm: "Really?" } do %>
+                    <i class="fas fa-trash float-right" title="Delete income"></i>
+                <% end  %>
+                <%= link_to new_goal_income_path(goal) do %>
+                    <i class="fas fa-plus float-right" title="Add income"></i>
+                <% end  %>
+            </div>
+        </div>
+        <h6 class="card-subtitle mb-2 text-muted">Investment Goal: $<%= goal.amount %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Current Investment: <span class="badge badge-secondary">$<%= goal.investment %></span></h6>
         <h5 class="card-text text-center"><span class="badge badge-warning">$<%= (goal.amount - goal.investment).round %></span></h5>
-        <a href="#" class="card-link">Completion date:</a>
+        <%= link_to "Investments", goal_incomes_path(goal), class: 'card-link' %>
         <a href="#" class="card-link"><%= goal.completion_date.strftime('%b %d, %Y') %></a>
     </div>
 </div>

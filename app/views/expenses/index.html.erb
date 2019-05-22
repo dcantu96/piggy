@@ -1,0 +1,24 @@
+<h1>Expenses</h1>
+New Expense
+<%= link_to 'Add Expense', new_account_expense_path, class: 'btn btn-primary float-right' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expenses.each do |expense| %>
+        <tr>
+            <th scope="row"><%= expense.id %></th>
+            <td><%= expense.name %></td>
+            <td><%= expense.amount %></td>
+            <td><%= expense.date %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

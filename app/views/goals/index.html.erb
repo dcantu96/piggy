@@ -1,2 +1,1 @@
-<h1>Goal#index</h1>
-<p>Find me in app/views/goal/index.html.erb</p>
+<%=  bar_chart @goals.joins(:incomes).group("goals.name").sum("incomes.amount"), xtitle: "Current Investment" %>

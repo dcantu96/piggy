@@ -1,8 +1,14 @@
 <nav id="sidebar">
-    <div class="sidebar-header">
-        <h3>Bootstrap Sidebar</h3>
+    <div class="sidebar-header text-center">
+        <%= link_to root_path, class: 'btn' do %>
+            <i class="fas fa-piggy-bank fa-4x"></i>
+        <% end %>
+        <h3>Piggy Savings</h3>
     </div>
-    <div class="sidebar-items">
-        <%= render 'layouts/dashboard/sidenav_element' %>
+    <div class="container">
+        <%= render 'layouts/dashboard/sidenav_element', name: 'My Wallet', path: account_path(current_user.account) %>
+        <%= render 'layouts/dashboard/sidenav_element', name: 'My Goals', path: goals_path(current_user.goals) %>
+        <%= render 'layouts/dashboard/sidenav_element', name: 'My Categories', path: categories_path(current_user.categories) %>
+        <%= render 'layouts/dashboard/sidenav_element', name: 'My Profile', path: profile_path(current_user) %>
     </div>
 </nav>

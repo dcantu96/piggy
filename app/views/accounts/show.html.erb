@@ -1,0 +1,34 @@
+<%= column_chart @account.expenses.joins(:category).group("categories.name").sum(:amount) %>
+<div class="row">
+  <div class="col-8">
+    <h1>Account History from <%= @account.name %></h1>
+  </div>
+  <div class="col">
+    <%= link_to 'Add Expense', new_account_expense_path(@account), class: 'btn btn-primary float-right' %>
+  </div>
+  <div class="col">
+    <%= link_to 'Add Income', new_account_income_path(@account), class: 'btn btn-primary float-right' %>
+  </div>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Type</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @account.records.each do |record| %>
+        <tr>
+            <th scope="row"><%= record.id %></th>
+            <td><%= record.name %></td>
+            <td><%= record.amount %></td>
+            <td><%= type(record) %></td>
+            <td><%= date_with_format(record.date) %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

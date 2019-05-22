@@ -1,4 +1,5 @@
 <h1>Welcome, <%= current_user.first_name %>!</h1>
+<br>
 <%= render 'goal/form', goal: @goal if current_user.goals.empty? %>
 <div class="container">
     <div class="row">
@@ -8,6 +9,13 @@
         </div>
     </div>
     <%= render 'dashboard/goals' %>
+    <br>
+    <div class="row">
+        <div class="col">
+            <h2 class="float-left">My Wallet</h2>
+        </div>
+    </div>
+    <%= render 'dashboard/wallet', account: @account %>
 </div>
 <br>
 <br>

@@ -1,0 +1,24 @@
+<h1>Income from <%= @goal %></h1>
+New income
+<%= link_to 'Add Income', new_goal_income_path, class: 'btn btn-primary float-right' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @incomes.each do |income| %>
+        <tr>
+            <th scope="row"><%= income.id %></th>
+            <td><%= income.name %></td>
+            <td><%= income.amount %></td>
+            <td><%= income.date %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

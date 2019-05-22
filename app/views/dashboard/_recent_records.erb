@@ -1,0 +1,12 @@
+<div class="card mt-3">
+    <div class="card-header">
+        Last 5 Movements
+    </div>
+        <ul class="list-group list-group-flush">
+            <% @account.most_recent_records.each do |record| %>
+                <li class="list-group-item">Amount: <%= record.amount %>, Type: <%= type(record) %>, Date: <%= date_with_format(record.date) %></li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+

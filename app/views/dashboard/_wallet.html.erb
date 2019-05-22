@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-4">
+        <div class="card mt-3" style="width: 18rem;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title"><%= account.name %></h5>
+                    </div>
+                    <div class="col">
+                        <%= link_to new_account_income_path(account) do %>
+                            <i class="fas fa-plus float-right" title="Add income"></i>
+                        <% end  %>
+                        <%= link_to new_account_expense_path(account) do %>
+                            <i class="fas fa-minus float-right" title="Add income">&nbsp;&nbsp;&nbsp;</i>
+                        <% end  %>
+                    </div>
+                </div>
+                <h6 class="card-subtitle mb-2 text-muted">Current Balance: <span class="badge badge-<%= account.balance < 0 ? 'danger' : 'success' %>">$<%= account.balance %></span></h6>
+                <%= link_to "Recent History", account_path(account), class: 'card-link' %>
+            </div>
+        </div>
+    </div>
+    <div class="col-7">
+    <%= render 'dashboard/recent_records', account: @account %>
+    </div>
+</div>
