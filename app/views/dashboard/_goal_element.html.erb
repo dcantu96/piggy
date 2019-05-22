@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><%= goal.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Investment Goal: <%= goal.amount %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Actual Investment: <span class="badge badge-secondary"><%= goal.investment %></span></h6>
+        <h5 class="card-text text-center"><span class="badge badge-warning">$<%= (goal.amount - goal.investment).round %></span></h5>
+        <a href="#" class="card-link">Completion date:</a>
+        <a href="#" class="card-link"><%= goal.completion_date.strftime('%b %d, %Y') %></a>
+    </div>
+</div>

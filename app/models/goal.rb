@@ -1,7 +1,7 @@
 class Goal < ApplicationRecord
   belongs_to :user
 
-  def total_income
+  def investment
     # incomes.reduce(:+)
     100
   end

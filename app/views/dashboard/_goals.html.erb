@@ -1,11 +1,9 @@
-<% @goals.each do |goal| %>
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title"><%= goal.name %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%= goal.amount %></h6>
-        <p class="card-text">Te falta: <%= goal.amount - goal.total_income %></p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-    </div>
+<% @goals.in_groups_of(3).each do |group| %>
+    <div class="row">
+        <% group.each do |goal| %>
+            <div class="col">
+                <%= render 'dashboard/goal_element', goal: goal if goal %>
+            </div>
+        <% end %>
     </div>
 <% end %>

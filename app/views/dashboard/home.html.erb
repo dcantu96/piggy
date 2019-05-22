@@ -1,3 +1,15 @@
 <h1>Welcome, <%= current_user.first_name %>!</h1>
 <%= render 'goal/form', goal: @goal if current_user.goals.empty? %>
-<%= render 'dashboard/goals' %>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="float-left">My Goals</h2>
+            <%= render 'dashboard/add_goal_button' %>
+        </div>
+    </div>
+    <%= render 'dashboard/goals' %>
+</div>
+<br>
+<br>
+<br>
+

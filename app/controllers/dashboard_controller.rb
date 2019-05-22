@@ -7,6 +7,7 @@ class DashboardController < ApplicationController
     # Will create a new account for new users
     @account = current_user.account
     @goals = current_user.goals
+    @goal_rows = @goals.count/3+1 # amount of rows for goals
 
     # Will build a new goal for new users
     @goal = current_user.goals.build if current_user.goals.empty?

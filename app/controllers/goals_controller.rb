@@ -1,4 +1,6 @@
 class GoalsController < ApplicationController
+  before_action :set_goal, only: [:edit, :update, :show]
+  layout 'dashboard'
   def index
     @goals = current_user.goals
 
@@ -9,12 +11,6 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @goal = Goal.find(set_goal)
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @goal }
-    end
   end
 
   def new
@@ -27,45 +23,30 @@ class GoalsController < ApplicationController
   end
 
   def edit
-    @goal = Goal.find(set_goal)
   end
 
   def create
-    @goal = Goal.new(goal_params)
-
-    respond_to do |format|
-      if @goal.save
-        format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
-        format.json { render json: @goal, status: :created, location: @goal }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @goal.errors, status: :unprocessable_entity }
-      end
+    @goal = current_user.goals.build(goal_params)
+    if @goal.save
+      redirect_to root_path, notice: 'Goal was successfully created.'
+    else
+      flash[:error] = @goal.errors.full_messages
+      render :new
     end
   end
 
   def update
-    @goal = Goal.find(set_goal)
-
-    respond_to do |format|
-      if @goal.update_attributes(params[:goal])
-        format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @goal.errors, status: :unprocessable_entity }
-      end
+    if @goal.update(goal_params)
+      redirect_to root_path, notice: 'Goal was successfully updated.'
+    else
+      flash[:error] = @goal.errors.full_messages
+      render :edit
     end
   end
 
   def destroy
-    @goal = Goal.find(set_goal)
     @goal.destroy
-
-    respond_to do |format|
-      format.html { redirect_to goals_url }
-      format.json { head :no_content }
-    end
+    redirect_to root_url, notice: 'Goal was successfully destroyed.'
   end
 
   private
@@ -77,6 +58,6 @@ class GoalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def goal_params
-      params.require(:goal).permit(:name, :completion_date, :amount, :user_id)
+      params.require(:goal).permit :name, :completion_date, :amount, :user_id
     end
 end
